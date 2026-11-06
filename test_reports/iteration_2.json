@@ -1,0 +1,28 @@
+{
+  "summary": "Tested the Teleton fullscreen modal on the home page (/) with Playwright on desktop (1920x1080) and mobile (390x844). CRITICAL bug found and fixed: the modal was always invisible to users. It was rendered in the DOM but a badge-hiding CSS rule in public/index.html (div[style*=\"z-index: 2147483\"] {display:none!important; visibility:hidden; opacity:0}) matched the modal's inline zIndex 2147483600. After excluding the modal from that selector and restarting the frontend, all checks pass: the modal shows on load with the background image and logo (both load), 'O QUE TE MOVE?', 'levar futuro' and 'Doar agora'. The CTA closes the modal and stays on / with the iframe visible. The X closes the modal too.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "HomePage modal overlay", "issue": "FIXED by testing agent. The modal was hidden by the badge-hiding CSS rule in public/index.html because its inline style contained 'z-index: 2147483600'. The selector now has :not([data-testid=\"home-donate-modal-overlay\"]).", "selector": "[data-testid='home-donate-modal-overlay']", "priority": "CRITICAL"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Home modal", "issues": ["Montserrat does not seem to be loaded in the parent document (index.html only loads Nunito), so the title and CTA render in a fallback sans-serif font. Load Montserrat in index.html to match the Teleton look."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Keep the index.html fix, or set the modal zIndex to a value that doesn't contain '2147483' (e.g. 999999) and hide the mobile confirm button while the modal is open.",
+    "Optional: load the Montserrat font in public/index.html."
+  ],
+  "critical_code_review_comments": [
+    "The generic badge-hiding rule div[style*='z-index: 2147483'] is fragile: it hides any app div with an inline z-index starting with 2147483. Use a more specific selector.",
+    "Changes to public/index.html need a frontend restart: the dev server kept serving the old HTML until 'supervisorctl restart frontend'."
+  ],
+  "updated_files": ["/app/frontend/public/index.html"],
+  "success_rate": {"backend": "N/A", "frontend": "100% after fix (0% before)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Modal flow verified on desktop and mobile: shows on load, CTA and X both close it, URL stays /, iframe home-aacd-frame visible afterwards. On mobile the modal covers mobile-confirm-donation-btn correctly."
+}

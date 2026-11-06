@@ -61,7 +61,7 @@ const HomePage = () => {
           data-testid="home-donate-modal-overlay"
           style={{
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-            width: '100vw', height: '100vh', zIndex: 2147483600,
+            width: '100vw', height: '100vh', zIndex: 999999,
             background: '#1a1030',
             overflow: 'hidden',
             fontFamily: 'Montserrat, sans-serif',
@@ -163,7 +163,7 @@ const HomePage = () => {
             right: 0,
             bottom: 0,
             width: '100%',
-            zIndex: 2147483000,
+            zIndex: 999990,
             border: 'none',
             background: '#eb1941',
             color: '#fff',
