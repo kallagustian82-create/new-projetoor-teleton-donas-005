@@ -101,7 +101,7 @@ const HomePage = () => {
             </button>
 
             <img
-              src="/images/aacd-teleton-logo.png"
+              src="/images/aacd-teleton-logo2.png"
               alt="AACD Teleton"
               style={{
                 position: 'absolute', top: '32px', left: '5vw', zIndex: 3,
@@ -136,7 +136,7 @@ const HomePage = () => {
                 style={{
                   marginTop: 'clamp(24px, 4vh, 40px)',
                   border: 'none', cursor: 'pointer',
-                  background: 'linear-gradient(135deg, #f7971e 0%, #eb1941 100%)',
+                  background: '#eb1941',
                   color: '#fff', fontFamily: 'Montserrat, sans-serif', fontWeight: 800,
                   fontSize: 'clamp(16px, 1.6vw, 20px)', textTransform: 'uppercase',
                   letterSpacing: '0.5px', padding: '16px 48px', borderRadius: '999px',
