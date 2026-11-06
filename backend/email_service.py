@@ -8,7 +8,18 @@ from html import escape
 import resend
 
 CAMPAIGN_NAME = "Teleton 2026"
+SENDER_NAME = "Campanha Teleton 2026"
 LOGO_URL = "https://aacd.vtexassets.com/assets/vtex/assets-builder/aacd.store/0.0.49/logo-aacd___07c4f535c1d9859db0b880c512993be9.png"
+
+
+def _format_from(from_addr: str) -> str:
+    """Garante o nome de exibição 'Campanha Teleton 2026', preservando o e-mail configurado."""
+    addr = (from_addr or "").strip()
+    if "<" in addr and ">" in addr:
+        email = addr[addr.find("<") + 1:addr.find(">")].strip()
+    else:
+        email = addr
+    return f"{SENDER_NAME} <{email}>" if email else addr
 
 
 def _format_brl(value: float) -> str:
@@ -71,7 +82,7 @@ async def send_donation_receipt(donor_name: str, donor_email: str, value: float,
     html = _build_html(donor_name, value, donate_url)
     try:
         await resend.Emails.send_async({
-            "from": from_addr,
+            "from": _format_from(from_addr),
             "to": [donor_email],
             "subject": f"Recibo da sua doação - {CAMPAIGN_NAME}",
             "html": html,
@@ -99,7 +110,7 @@ async def send_donation_reminder(donor_name: str, donor_email: str, value: float
     html = _build_html(donor_name, value, donate_url, heading="Lembrete da sua doação", intro=intro)
     try:
         await resend.Emails.send_async({
-            "from": from_addr,
+            "from": _format_from(from_addr),
             "to": [donor_email],
             "subject": f"Lembrete: conclua sua doação - {CAMPAIGN_NAME}",
             "html": html,
