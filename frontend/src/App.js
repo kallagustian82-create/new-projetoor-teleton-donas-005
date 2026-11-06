@@ -78,6 +78,7 @@ const HomePage = () => {
             style={{ border: 'none', position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
           />
 
+          {!isMobile && (
           <button
             data-testid="home-donate-modal-close"
             onClick={() => setShowModal(false)}
@@ -95,6 +96,7 @@ const HomePage = () => {
           >
             ×
           </button>
+          )}
         </div>
       ), document.body)}
 

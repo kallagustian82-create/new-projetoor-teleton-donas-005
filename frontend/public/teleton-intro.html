@@ -19,13 +19,13 @@
   /* use the real horizontal logo on mobile (vertical one is empty) */
   .logo__h{display:block!important}
   .logo__v{display:none!important}
-  .logo{left:50%!important;top:calc(70*var(--u))!important;width:calc(330*var(--u))!important;transform:translateX(-50%)!important;filter:drop-shadow(0 calc(3*var(--u)) calc(12*var(--u)) rgba(0,0,0,.6))!important}
-  /* compact centered headline near the top */
-  .headline{left:50%!important;right:auto!important;top:calc(300*var(--u))!important;text-align:center!important;transform:translateX(-50%) scale(var(--fit,1))!important;transform-origin:center top!important}
-  .headline__main{font-size:calc(132*var(--u))!important;line-height:calc(126*var(--u))!important}
-  .headline__sub{font-size:calc(66*var(--u))!important;line-height:calc(66*var(--u))!important;margin-top:calc(2*var(--u))!important;margin-right:0!important}
-  /* pin the CTA near the bottom, centered and visible */
-  #doarAgoraBtn{left:50%!important;right:auto!important;top:auto!important;bottom:calc(140*var(--u))!important;transform:translateX(-50%)!important;height:calc(128*var(--u))!important;font-size:calc(52*var(--u))!important;padding:0 calc(120*var(--u))!important;box-shadow:0 calc(18*var(--u)) calc(40*var(--u)) rgba(235,25,65,.5)!important}
+  .logo{left:calc(70*var(--u))!important;top:calc(70*var(--u))!important;width:calc(300*var(--u))!important;transform:none!important;filter:drop-shadow(0 calc(3*var(--u)) calc(12*var(--u)) rgba(0,0,0,.6))!important}
+  /* headline moved down, near the CTA, left aligned */
+  .headline{left:calc(70*var(--u))!important;right:auto!important;top:auto!important;bottom:calc(400*var(--u))!important;text-align:left!important;transform:scale(var(--fit,1))!important;transform-origin:left bottom!important}
+  .headline__main{font-size:calc(120*var(--u))!important;line-height:calc(112*var(--u))!important}
+  .headline__sub{font-size:calc(60*var(--u))!important;line-height:calc(60*var(--u))!important;margin-top:calc(4*var(--u))!important;margin-right:0!important}
+  /* CTA: smaller and a bit higher */
+  #doarAgoraBtn{left:calc(70*var(--u))!important;right:auto!important;top:auto!important;bottom:calc(230*var(--u))!important;transform:none!important;height:calc(100*var(--u))!important;font-size:calc(42*var(--u))!important;padding:0 calc(80*var(--u))!important;box-shadow:0 calc(16*var(--u)) calc(36*var(--u)) rgba(235,25,65,.5)!important}
 }
 </style>
 </head>
