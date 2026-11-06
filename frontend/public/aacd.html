@@ -149,10 +149,11 @@ window.__aacdWired = false;
       if(cb) cb.checked = monthly;
       if(span) span.textContent = monthly ? 'Sim' : 'N\u00e3o';
     }
-    label.addEventListener('click', function(e){
-      e.preventDefault(); e.stopImmediatePropagation();
-      monthly = !monthly; render();
-    }, true);
+    label.style.pointerEvents = 'none';
+    label.style.opacity = '0.55';
+    label.style.cursor = 'not-allowed';
+    if(cb){ cb.disabled = true; }
+    label.setAttribute('aria-disabled', 'true');
     render();
   }
 
