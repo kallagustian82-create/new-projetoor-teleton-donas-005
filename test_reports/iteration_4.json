@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only test of the Teleton intro modal (/teleton-intro.html iframe) on Android 412x915, iOS 390x844 and Desktop 1920x1080. On all 3 viewports the modal shows up, the logo, title and DOAR AGORA button are visible and fit on screen without scrolling (scrollHeight equals the viewport height), and clicking #doarAgoraBtn inside the iframe closes the modal and shows home-aacd-frame while staying on /. Desktop has no regression.",
+  "measurements": {
+    "android_412x915": {"mobile_media_query": true, "logo": "x=143 y=27 w=126 h=67 (centered, .logo__h shown, .logo__v hidden)", "headline": "y=114-188 centered", "button": "x=84 y=813 w=244 h=49 -> bottom 862 < 915"},
+    "ios_390x844": {"mobile_media_query": true, "logo": "x=135 y=25 w=119 h=63 (centered)", "headline": "y=108-178 centered", "button": "x=82 y=747 w=227 h=46 -> bottom 793 < 844"},
+    "desktop_1920x1080": {"mobile_media_query": false, "logo": "x=186 y=230 (top left)", "headline": "x=183 y=439 (left aligned)", "button": "x=259 y=858 h=72 -> bottom 930 < 1080"}
+  },
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile intro modal", "issues": [
+        "The white 'teleton' wordmark sits over a bright sky/street-sign area of the background photo, so contrast is a bit low. A subtle text-shadow or a top dark gradient would help.",
+        "The 'levar futuro' subtitle slightly overlaps the top of the green bracket graphic. This is cosmetic only."
+      ]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": ["Optional only: improve contrast of the logo wordmark on mobile with a top gradient or shadow"],
+  "critical_code_review_comments": ["The mobile CSS relies heavily on !important overrides inside @media (max-aspect-ratio:4/5). It works, but landscape phones or tablets in portrait at around 4:5 will switch layouts at that aspect ratio. This is acceptable."],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Access the iframe [data-testid=home-donate-modal] via content_frame() and use #doarAgoraBtn inside it. After the click the overlay is removed from the DOM and [data-testid=home-aacd-frame] becomes visible."
+}
