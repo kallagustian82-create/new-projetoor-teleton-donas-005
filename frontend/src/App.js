@@ -100,15 +100,27 @@ const HomePage = () => {
               ×
             </button>
 
-            <img
-              src="/images/aacd-teleton-logo2.png"
-              alt="AACD Teleton"
-              style={{
-                position: 'absolute', top: '32px', left: '5vw', zIndex: 3,
-                width: 'clamp(150px, 16vw, 240px)', height: 'auto',
-                filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.4))',
-              }}
-            />
+            <div style={{
+              position: 'absolute', top: '32px', left: '5vw', zIndex: 3,
+              display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '14px',
+            }}>
+              <img
+                src="/images/aacd-teleton-logo2.png"
+                alt="AACD Teleton"
+                style={{
+                  width: 'clamp(150px, 16vw, 240px)', height: 'auto',
+                  filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.4))',
+                }}
+              />
+              <img
+                src="/images/sbt-do-bem.png"
+                alt="SBT do Bem"
+                style={{
+                  width: 'clamp(90px, 9vw, 140px)', height: 'auto',
+                  filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.4))',
+                }}
+              />
+            </div>
 
             <div style={{
               position: 'absolute', zIndex: 3,
@@ -117,14 +129,14 @@ const HomePage = () => {
             }}>
               <h1 style={{
                 margin: 0, fontWeight: 800, color: '#fff',
-                fontSize: 'clamp(40px, 7vw, 84px)', lineHeight: 0.95,
+                fontSize: 'clamp(30px, 5vw, 58px)', lineHeight: 0.98,
                 letterSpacing: '-1px', textShadow: '0 2px 24px rgba(0,0,0,0.45)',
               }}>
                 O QUE TE MOVE?
               </h1>
               <p style={{
                 margin: '6px 0 0', fontWeight: 400, color: '#f1e9ff',
-                fontSize: 'clamp(22px, 3.4vw, 40px)', lineHeight: 1,
+                fontSize: 'clamp(17px, 2.4vw, 28px)', lineHeight: 1,
                 textShadow: '0 2px 18px rgba(0,0,0,0.45)',
               }}>
                 levar futuro
@@ -134,13 +146,13 @@ const HomePage = () => {
                 data-testid="home-donate-modal-cta"
                 onClick={handleModalDonate}
                 style={{
-                  marginTop: 'clamp(24px, 4vh, 40px)',
+                  marginTop: 'clamp(20px, 3.2vh, 32px)',
                   border: 'none', cursor: 'pointer',
                   background: '#eb1941',
                   color: '#fff', fontFamily: 'Montserrat, sans-serif', fontWeight: 800,
-                  fontSize: 'clamp(16px, 1.6vw, 20px)', textTransform: 'uppercase',
-                  letterSpacing: '0.5px', padding: '16px 48px', borderRadius: '999px',
-                  boxShadow: '0 12px 32px rgba(235,25,65,0.45)',
+                  fontSize: 'clamp(13px, 1.2vw, 16px)', textTransform: 'uppercase',
+                  letterSpacing: '0.5px', padding: '11px 32px', borderRadius: '999px',
+                  boxShadow: '0 10px 26px rgba(235,25,65,0.45)',
                   transition: 'transform 0.15s ease, filter 0.15s ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
