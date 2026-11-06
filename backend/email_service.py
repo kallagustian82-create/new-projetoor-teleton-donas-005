@@ -78,7 +78,7 @@ async def send_donation_receipt(donor_name: str, donor_email: str, value: float,
         return False
 
     resend.api_key = api_key
-    donate_url = f"{public_url}/doacao/pix?don={donation_id}"
+    donate_url = f"{public_url}/doacao/pix?don={donation_id}&utm_source=email"
     html = _build_html(donor_name, value, donate_url)
     try:
         await resend.Emails.send_async({
@@ -102,7 +102,7 @@ async def send_donation_reminder(donor_name: str, donor_email: str, value: float
         return False
 
     resend.api_key = api_key
-    donate_url = f"{public_url}/doacao/pix?don={donation_id}"
+    donate_url = f"{public_url}/doacao/pix?don={donation_id}&utm_source=email"
     name = escape(donor_name or "Doador(a)")
     campaign = escape(CAMPAIGN_NAME)
     intro = (f"Olá <b>{name}</b>, ainda dá tempo de concluir sua doação para a campanha <b>{campaign}</b>! "

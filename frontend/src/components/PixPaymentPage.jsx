@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Copy, Check } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import axios from 'axios';
+import { getTrafficSource } from '../lib/source';
 
 const API = '/api';
 
@@ -134,7 +135,7 @@ const PixPaymentPage = () => {
             donor_email: donor?.email || '',
             device: isMobile ? 'Mobile' : 'Desktop',
             tax_deduction: taxDeduction,
-            origin: institution || window.location.hostname
+            origin: institution || getTrafficSource()
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {

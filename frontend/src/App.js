@@ -8,6 +8,7 @@ import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/AdminDashboard";
 
 import DonorDataPage from "./components/DonorDataPage";
+import { getTrafficSource } from "./lib/source";
 
 const API = '/api';
 
@@ -134,7 +135,7 @@ const HomePage = () => {
 function App() {
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    axios.post(`${API}/admin/visits/track`, { device: isMobile ? 'Mobile' : 'Desktop', origin: window.location.hostname }).catch(() => {});
+    axios.post(`${API}/admin/visits/track`, { device: isMobile ? 'Mobile' : 'Desktop', origin: getTrafficSource() }).catch(() => {});
   }, []);
 
   return (
