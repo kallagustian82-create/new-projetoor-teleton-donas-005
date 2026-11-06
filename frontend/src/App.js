@@ -49,7 +49,6 @@ const HomePage = () => {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
-      <div data-testid="diag-red-box" style={{ position: 'fixed', top: '10px', left: '10px', width: '220px', height: '60px', background: 'red', color: '#fff', zIndex: 99999, fontSize: '20px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>DIAG BOX</div>
       <iframe
         ref={iframeRef}
         title="Teleton AACD"
