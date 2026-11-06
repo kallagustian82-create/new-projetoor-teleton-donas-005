@@ -1,0 +1,26 @@
+{
+  "summary": "Frontend-only test of the Teleton intro modal on home (/). Desktop 1920x1080: the overlay (home-donate-modal-overlay) and the iframe (home-donate-modal, src=/teleton-intro.html) both render. The AACD teleton logo, 'O QUE TE MOVE?', 'levar futuro' and a red 'DOAR AGORA' button (rgb 235,25,65) all show. None of the forbidden strings appear in the iframe text or HTML: Camila Vitória, Doe pelo pix, doeteleton@aacd.org.br, Copiar chave pix, Seja um doador mensal, Com a b.ia do Bradesco, whatsapp.com, doe.aacd.org.br. Clicking #doarAgoraBtn inside the iframe closes the modal, home-aacd-frame shows with the donation cards, and the URL stays at /. The X button (home-donate-modal-close) also closes the modal. No page errors. Mobile 390x844: DOAR AGORA closes the modal too, but the button sits below the fold.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Teleton intro modal - mobile 390x844", "issues": ["The DOAR AGORA button is at y≈1033px, below the 844px viewport. The user has to scroll inside the iframe to find the main call to action. The AACD teleton logo is also not visible in the first mobile view. Consider pinning the CTA or moving it up on small screens."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Optional: make DOAR AGORA visible above the fold on mobile (e.g. 390x844)",
+    "Optional cleanup: remove the unused .bradesco / .btn--bia CSS rules and the hidden placeholder img (class 'logo__v sf-hidden', src=data:,) from teleton-intro.html. Neither is visible to users."
+  ],
+  "critical_code_review_comments": [
+    "teleton-intro.html still has unused CSS selectors containing 'bradesco' and 'bia'. These are not rendered, only dead code.",
+    "App.js message handler does not check event.origin. The only actions are closing the modal and navigating with a value, so the risk is low, but checking the origin is good practice."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Use frame_locator('[data-testid=\"home-donate-modal\"]').locator('#doarAgoraBtn') to click the CTA. After closing, the overlay count goes to 0 and home-aacd-frame is visible. Every review_request item passed."
+}
